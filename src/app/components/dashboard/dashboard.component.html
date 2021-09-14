@@ -1,0 +1,30 @@
+<h2>Covid-19 Data Summaries</h2>
+<div style="display: block;">
+
+
+
+<!-- {{ summaries.Countries | json }} -->
+<!--
+<ul *ngFor="let summary of summaries.Countries">
+  <p>{{ summary.ID }} : {{summary.Country}} : Total Deaths {{summary.TotalConfirmed}}</p>
+
+</ul> -->
+
+<table datatable  [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Country</th>
+      <th>Total Deaths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let summary of summaries.Countries">
+      <td>{{ summary.ID }}</td>
+      <td>{{ summary.Country }}</td>
+      <td>{{ summary.TotalConfirmed }}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
