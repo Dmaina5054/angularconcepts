@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   summaries: any; //data holder for returned items
   // We use this trigger because fetching the list of summaries can be quite long,
   // thus we ensure the data is fetched before rendering
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger: Subject<any> = new Subject<any>(); //allow us to subscribe to an observable
   dtOptions: DataTables.Settings = {};
 
 //injecting the service into our constructor
@@ -42,6 +42,14 @@ ngOnInit() {
       console.log(error);
     }
   )
+}
+
+//destroy method for component
+ngOnDestroy(): void {
+  //Called once, before the instance is destroyed.
+  //Add 'implements OnDestroy' to the class.
+  //unsubscribe from the event
+  this.dtTrigger.unsubscribe();
 }
 
 }
